@@ -1,15 +1,16 @@
 var express = require('express');
 var app = express();
 
-app.use('/',express.static(__dirname + '/static/index.html'));
-app.use('/',express.static(__dirname + '/static'));
+// Fetch index file automatically
+// app.use(express.static(__dirname + '/static'));
 
+// Fetching particular file instead of index file in static folder
 
+app.get('/', function(req,res){
+    res.sendFile(__dirname + '/static/about.html');
+});
 
-// app.get('/', function(req,res){
-//     res.sendfile(__dirname + '/static/index.html');
-// });
-
+app.use(express.static(__dirname + '/static'));
 
 
 // app.get('/', function(req,res,next){
